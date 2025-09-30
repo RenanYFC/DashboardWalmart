@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWalmartData } from '@/hooks/use-walmart-data';
+import Image from 'next/image';
+
 
 const navItems = [
   {
@@ -71,24 +73,46 @@ export default function Sidebar() {
       isCollapsed ? 'w-16' : 'w-64'
     )}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-blue-700">
-        {!isCollapsed && (
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
-              <BarChart3 className="w-5 h-5 text-blue-900" />
-            </div>
-            <div>
-              <h1 className="text-white font-bold text-sm">Walmart</h1>
-              <p className="text-blue-200 text-xs">Insights de Entregas</p>
-            </div>
-          </div>
-        )}
+      <div className="flex flex-col p-4 border-b border-blue-700">
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1.5 rounded-md hover:bg-blue-800 text-blue-200 hover:text-white transition-colors"
+          className="p-1.5 rounded-md hover:bg-blue-800 text-blue-200 hover:text-white transition-colors flex justify-end"
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
         </button>
+
+        {!isCollapsed && (
+          <div className=' bg-white rounded-lg mt-5 w-50'>
+    
+            <div className="relative w-full  h-12 mb-4">
+              <Image
+                  src="/assets/data-tech-florida.png"
+                  alt="Data Tech Florida Logo"
+                  className="object-contain" // object-contain garante que o logo não seja cortado
+                  fill
+              />
+          </div>
+        </div>
+        )}
+
+        {!isCollapsed && (
+          <div className="flex items-center space-x-2 mt-5">
+            <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center">
+              <Image
+                src="/assets/walmart-logo-transparent.png"
+                alt="Walmart Logo"
+                width={25}
+                height={25} 
+              />
+            </div>
+            <div>
+              <h1 className="text-white font-bold text-sm">Walmart</h1>
+              <p className="text-blue-200 text-xs">Dashboard</p>
+            </div>
+          </div>
+        )}
+
+      
       </div>
 
       {/* Navigation */}
